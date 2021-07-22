@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './AppNavbar.css'
 import { Link } from 'react-router-dom'
 import { Image } from 'react-bootstrap'
 import { IMG_URL, convertDate } from '../config'
-import LazyLoad from 'react-lazyload'
 
 export default function MovieCards({movie}) {
+    const [loading, setLoading] = useState(true)
 
     const paragraphStyle = {
         margin: '0',
@@ -18,9 +18,8 @@ export default function MovieCards({movie}) {
         <div>
             <Link to={`/movie/${movie.id}`}>
                 <div className="movie-container">
-                    <LazyLoad height={100}>
-                        <Image fluid={true} alt={`${movie.title} poster`} className="img-poster" src={`${IMG_URL}${movie.poster_path}`}></Image>
-                    </LazyLoad>
+                    <Image onLoad={(e) => setLoading(false)} fluid={true} alt={`${movie.title} poster`} className="img-poster" src={`${IMG_URL}${movie.poster_path}`}></Image>
+                    {loading && <div className="linePreloader"></div>}
 
                     <p style={{...paragraphStyle, color: '#333'}}><b>{movie.title}</b></p>
 

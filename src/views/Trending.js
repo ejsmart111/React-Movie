@@ -3,6 +3,7 @@ import Categories from '../components/Categories'
 import axios from 'axios'
 import { BASE_URL, API_KEY } from '../config'
 import { Button, Container } from 'react-bootstrap'
+import { ArrowRight, ArrowLeft } from 'react-bootstrap-icons'
 
 export default function TrendingToday({time}) {
     const [trending, setTrending] = useState([])
@@ -14,9 +15,9 @@ export default function TrendingToday({time}) {
             const incomingTrends = response.data.results
             setTrending([...incomingTrends])
             setPageNumber(response.data.total_pages)
-            setTimeout(() => {
+            // setTimeout(() => {
                 window.scrollTo(0,0)
-            }, 500);
+            // }, 500);
         })
     }, [page, time])
 
@@ -38,13 +39,13 @@ export default function TrendingToday({time}) {
             <Container>
                 <p style={{marginTop: '20px'}}>Page {page} of {pageNumber}</p>
                 <div style={{display: 'flex', alignContent: 'center', marginTop: '30px', marginBottom: '40px'}}>
-                    {page > 8 && <Button onClick={() => setPage(page-8)} style={{marginLeft: '10px'}} variant="primary">...</Button>}
+                    {page !== 1 && <Button onClick={() => setPage(page-1)} style={{marginLeft: '10px'}} variant="primary"><ArrowLeft/></Button>}
                     {
                         pageNumberObject().slice(page-1, page+7).map(pagex => {
                             return <Button onClick={() => setPage(pagex.number)} style={{marginLeft: '10px'}} variant={page === pagex.number? 'success':'primary'}>{pagex.number}</Button>
                         })
                     }
-                    {!(page <= pageNumber && page >= pageNumber-8) && <Button onClick={() => setPage(page+8)} style={{marginLeft: '10px'}} variant="primary">...</Button>}
+                    {(page !== pageNumber) && <Button onClick={() => setPage(page+1)} style={{marginLeft: '10px'}} variant="primary"><ArrowRight/></Button>}
                 </div>
             </Container>
         </div>

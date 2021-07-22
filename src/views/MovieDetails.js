@@ -6,6 +6,7 @@ import HomeSlideShow from '../components/HomeSlideShow'
 import CastList from '../components/CastList'
 import Reviews from '../components/Reviews'
 import Categories from '../components/Categories'
+import { Spinner } from 'react-bootstrap'
 
 export default function MovieDetails({match}) {
     const BASE_URL = 'https://api.themoviedb.org/3/'
@@ -19,9 +20,9 @@ export default function MovieDetails({match}) {
         axios.get(`${BASE_URL}movie/${match.params.id}?api_key=${API_KEY}`).then(data => {
             setMovieDetail(data.data)
             setLoadingDetail(false)
-            setTimeout(() => {
+            // setTimeout(() => {
                 window.scrollTo(0,0)
-            }, 500);
+            // }, 500);
         })
     }, [match.params.id])
 
@@ -39,6 +40,7 @@ export default function MovieDetails({match}) {
 
     return (
         <div>
+            { loadingDetail && <Spinner size="xl" animation="grow"/> }
             {
                 !loadingDetail && <div>
                     <HomeSlideShow isObj={'object'} trendingMovies={movieDetail}/>

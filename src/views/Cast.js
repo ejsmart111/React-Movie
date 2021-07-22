@@ -11,6 +11,7 @@ export default function Cast({match}) {
     useEffect(() => {
         axios.get(`${BASE_URL}person/${match.params.id}/movie_credits?api_key=${API_KEY}`).then(data => {
             setMovies(data.data.cast)  
+            window.scrollTo(0,0)
         })
     }, [match.params.id])
 
@@ -43,7 +44,7 @@ export default function Cast({match}) {
                         </Col>
                         <Col md={9}>
                             <h2>{person.name}</h2>
-                            <p style={paragraphStyle}>{person.also_known_as[0]}</p>
+                            <p style={paragraphStyle}>{person.also_known_as && person.also_known_as.length > 1? person.also_known_as[0]: ''}</p>
 
                             <h3>Biography</h3>
                             <p style={{fontSize: '14px', lineHeight: '30px'}}>{person.biography}</p>

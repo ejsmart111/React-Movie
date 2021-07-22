@@ -13,7 +13,7 @@ export default function AppNavbar() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <Nav.Link to="/trending_this_week">Movies</Nav.Link>
+                        <Nav.Link as={Link} to="/trending_this_week">Movies</Nav.Link>
                         {/* <Nav.Link href="#link">TV Shows</Nav.Link> */}
                     </Nav>
                     </Navbar.Collapse>
