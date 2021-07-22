@@ -1,0 +1,22 @@
+a {
+  color: white !important;
+}
+
+.img-poster {
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  min-height: 350px;
+}
+
+.movie-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.progress-bar-style {
+  width: "80%";
+  background-color: "#ccc";
+  border-radius: "5px";
+  height: "10px";
+}
