@@ -27,8 +27,10 @@ export default function Home() {
     }
 
     useEffect(() => {
-        fetchTrendingMovies('week').then(res => setTrendingMovies([...res]))
-        setLoading(false)
+        fetchTrendingMovies('week').then(res => {
+            setTrendingMovies([...res])
+            setLoading(false)
+        })
     }, [])
 
     useEffect(() => {

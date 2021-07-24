@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './AppNavbar.css'
 import { Container, Row, Col } from 'react-bootstrap'
 import CastCard from './CastCard'
