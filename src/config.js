@@ -1,4 +1,4 @@
-export const API_KEY = process.env.REACT_APP_API_KEY
+export const API_KEY = 'd1d49e0b77dcd2bfae34f164080aa3ce'
 
 export const BASE_URL = 'https://api.themoviedb.org/3/'
 
